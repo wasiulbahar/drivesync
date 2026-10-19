@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DriveSync Pro</title>
+<meta name="description" content="DriveSync Pro copies files between Google Drive and your Windows PC or external drive, and picks up where it left off.">
+<style>
+/* DriveSync Pro public pages - brand tokens from branding/tokens.json */
+:root {
+  --canvas: #0B0F19; --surface: #111827; --raised: #1F2937; --border: #1F2937;
+  --heading: #F9FAFB; --text: #E5E7EB; --body: #D1D5DB; --secondary: #9CA3AF;
+  --brand: #6366F1; --brand-strong: #4F46E5; --mint: #10B981; --link: #60A5FA;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--canvas); }
+body {
+  margin: 0; background: var(--canvas); color: var(--body);
+  font: 16px/1.65 "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 32px max(20px, env(safe-area-inset-left)) 64px; }
+header { display: flex; align-items: center; gap: 14px; margin-bottom: 40px; }
+header a { display: flex; align-items: center; gap: 14px; color: var(--heading); text-decoration: none; }
+header svg { width: 44px; height: 44px; flex: none; }
+header .name { font-size: 21px; font-weight: 700; }
+nav { margin-left: auto; display: flex; gap: 18px; flex-wrap: wrap; font-size: 14px; }
+nav a { color: var(--secondary); text-decoration: none; }
+nav a:hover, nav a[aria-current] { color: var(--heading); }
+h1 { color: var(--heading); font-size: 34px; line-height: 1.2; margin: 0 0 12px; text-wrap: balance; }
+h2 { color: var(--heading); font-size: 20px; margin: 36px 0 8px; }
+p, li { max-width: 68ch; }
+a { color: var(--link); }
+.lead { font-size: 18px; color: var(--secondary); margin-bottom: 28px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; margin: 18px 0; }
+.card h2 { margin-top: 0; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 26px 0; }
+.grid .card { margin: 0; }
+.grid h3 { color: var(--heading); font-size: 16px; margin: 0 0 6px; }
+.grid p { margin: 0; font-size: 15px; }
+.updated { color: var(--secondary); font-size: 14px; }
+footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--secondary); font-size: 14px; }
+footer a { color: var(--secondary); }
+code { background: var(--raised); padding: 1px 6px; border-radius: 6px; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="./">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6366F1"/><stop offset="1" stop-color="#10B981"/></linearGradient></defs><rect width="64" height="64" rx="15" fill="url(#g)"/><g fill="#fff"><circle cx="20" cy="39" r="8"/><circle cx="31" cy="31" r="12"/><circle cx="43" cy="38" r="9"/><rect x="20" y="33" width="23" height="14"/></g><path d="M26 29V41M22 37l4 4.5 4-4.5M36 42V30M32 34l4-4.5 4 4.5" fill="none" stroke="#4338CA" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="name">DriveSync Pro</span>
+    </a>
+    <nav><a href="./" aria-current="page">Home</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+  </header>
+
+  <main>
+    <h1>Your whole Google Drive, on your own hard drive.</h1>
+    <p class="lead">DriveSync Pro is a free Windows app that copies files between Google Drive and your PC or external drive, and picks up where it left off.</p>
+
+    <div class="grid">
+      <div class="card"><h3>Download</h3><p>Copy any Drive folder, or your whole Drive, to a folder or external disk.</p></div>
+      <div class="card"><h3>Upload</h3><p>Send a folder from your PC to Google Drive, with every file checked after upload.</p></div>
+      <div class="card"><h3>Pause anytime</h3><p>Stop, unplug or restart. Files you already have are skipped next time.</p></div>
+      <div class="card"><h3>Runs on your PC</h3><p>Your files travel only between your computer and Google. Nothing passes through our servers.</p></div>
+    </div>
+
+    <div class="card">
+      <h2>How it uses your Google account</h2>
+      <p>When you click <strong>Connect Google Drive</strong>, Google asks you to let DriveSync Pro see, edit, create and delete files in your Google Drive. The app needs this to download the folders you pick and upload the folders you choose. It only acts when you start a transfer, and the sign-in is stored on your own PC. Read the <a href="privacy.html">privacy policy</a> for details.</p>
+    </div>
+
+    <h2>Install</h2>
+    <p>Run <code>DriveSyncPro-Setup.exe</code> and click <strong>Install</strong>. No administrator rights are needed. Works on Windows 10 and 11.</p>
+  </main>
+
+  <footer>DriveSync Pro &middot; <a href="privacy.html">Privacy policy</a> &middot; <a href="terms.html">Terms of service</a></footer>
+</div>
+</body>
+</html>
