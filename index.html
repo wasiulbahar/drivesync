@@ -2,79 +2,270 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DriveSync Pro</title>
-<meta name="description" content="DriveSync Pro copies files between Google Drive and your Windows PC or external drive, and picks up where it left off.">
-<style>
-/* DriveSync Pro public pages - brand tokens from branding/tokens.json */
-:root {
-  --canvas: #0B0F19; --surface: #111827; --raised: #1F2937; --border: #1F2937;
-  --heading: #F9FAFB; --text: #E5E7EB; --body: #D1D5DB; --secondary: #9CA3AF;
-  --brand: #6366F1; --brand-strong: #4F46E5; --mint: #10B981; --link: #60A5FA;
-  color-scheme: dark;
-}
-* { box-sizing: border-box; }
-html { background: var(--canvas); }
-body {
-  margin: 0; background: var(--canvas); color: var(--body);
-  font: 16px/1.65 "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-}
-.wrap { max-width: 760px; margin: 0 auto; padding: 32px max(20px, env(safe-area-inset-left)) 64px; }
-header { display: flex; align-items: center; gap: 14px; margin-bottom: 40px; }
-header a { display: flex; align-items: center; gap: 14px; color: var(--heading); text-decoration: none; }
-header svg { width: 44px; height: 44px; flex: none; }
-header .name { font-size: 21px; font-weight: 700; }
-nav { margin-left: auto; display: flex; gap: 18px; flex-wrap: wrap; font-size: 14px; }
-nav a { color: var(--secondary); text-decoration: none; }
-nav a:hover, nav a[aria-current] { color: var(--heading); }
-h1 { color: var(--heading); font-size: 34px; line-height: 1.2; margin: 0 0 12px; text-wrap: balance; }
-h2 { color: var(--heading); font-size: 20px; margin: 36px 0 8px; }
-p, li { max-width: 68ch; }
-a { color: var(--link); }
-.lead { font-size: 18px; color: var(--secondary); margin-bottom: 28px; }
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; margin: 18px 0; }
-.card h2 { margin-top: 0; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 26px 0; }
-.grid .card { margin: 0; }
-.grid h3 { color: var(--heading); font-size: 16px; margin: 0 0 6px; }
-.grid p { margin: 0; font-size: 15px; }
-.updated { color: var(--secondary); font-size: 14px; }
-footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--secondary); font-size: 14px; }
-footer a { color: var(--secondary); }
-code { background: var(--raised); padding: 1px 6px; border-radius: 6px; font-size: 14px; }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DriveSync Pro: copy your Google Drive to your PC</title>
+<meta name="description" content="Free Windows app that copies your whole Google Drive, or any folder, to your PC or external hard drive, and uploads folders back. Pause anytime and pick up where you left off.">
+<meta name="theme-color" content="#0B0F19">
+<link rel="icon" href="media/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="media/logo-512.png">
+<meta property="og:title" content="DriveSync Pro">
+<meta property="og:description" content="Your whole Google Drive, on your own hard drive. Free for Windows 10 and 11.">
+<meta property="og:image" content="https://wasiulbahar.github.io/drivesync/media/demo-poster.jpg">
+<meta property="og:url" content="https://wasiulbahar.github.io/drivesync/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <a href="./">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6366F1"/><stop offset="1" stop-color="#10B981"/></linearGradient></defs><rect width="64" height="64" rx="15" fill="url(#g)"/><g fill="#fff"><circle cx="20" cy="39" r="8"/><circle cx="31" cy="31" r="12"/><circle cx="43" cy="38" r="9"/><rect x="20" y="33" width="23" height="14"/></g><path d="M26 29V41M22 37l4 4.5 4-4.5M36 42V30M32 34l4-4.5 4 4.5" fill="none" stroke="#4338CA" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span class="name">DriveSync Pro</span>
+
+<header class="site-header" id="top">
+  <div class="container">
+    <a class="brand" href="#top"><img src="media/logo.svg" alt="" width="34" height="34">DriveSync Pro</a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#install">Install help</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="https://github.com/wasiulbahar/drivesync/releases/latest/download/DriveSyncPro-Setup.exe">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>Download
     </a>
-    <nav><a href="./" aria-current="page">Home</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <h1>Your whole Google Drive, on your own hard drive.</h1>
-    <p class="lead">DriveSync Pro is a free Windows app that copies files between Google Drive and your PC or external drive, and picks up where it left off.</p>
-
-    <div class="grid">
-      <div class="card"><h3>Download</h3><p>Copy any Drive folder, or your whole Drive, to a folder or external disk.</p></div>
-      <div class="card"><h3>Upload</h3><p>Send a folder from your PC to Google Drive, with every file checked after upload.</p></div>
-      <div class="card"><h3>Pause anytime</h3><p>Stop, unplug or restart. Files you already have are skipped next time.</p></div>
-      <div class="card"><h3>Runs on your PC</h3><p>Your files travel only between your computer and Google. Nothing passes through our servers.</p></div>
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div>
+        <span class="eyebrow">Free for Windows 10 &amp; 11</span>
+        <h1>Your whole Google Drive, <span class="grad">on your own hard drive.</span></h1>
+        <p class="lead">DriveSync Pro copies any Google Drive folder, or your entire Drive, to your PC or an external disk. It uploads folders back too. Press Start, walk away, and pause anytime: it picks up where it left off.</p>
+        <div class="cta-row">
+          <div>
+            <a class="btn btn-primary btn-lg" href="https://github.com/wasiulbahar/drivesync/releases/latest/download/DriveSyncPro-Setup.exe">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>Download for Windows
+            </a>
+            <span class="dl-meta">Version 2.3.0 &middot; 28 MB &middot; DriveSyncPro-Setup.exe</span>
+          </div>
+          <a class="watch-link" href="#demo">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M10 8.5v7l6-3.5-6-3.5Z" fill="currentColor"/></svg>Watch the 25-second demo
+          </a>
+        </div>
+        <ul class="trust">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>One-click install, no admin rights</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Skips files you already have</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Your files never touch our servers</li>
+        </ul>
+      </div>
+      <div class="hero-shot">
+        <img class="app" src="media/app-progress.webp" width="1399" height="1119" alt="DriveSync Pro's Progress tab: 50.9% done, 37.7 MB/s, 9,645 of 18,940 files copied, 28 minutes left, with four files downloading.">
+        <img class="mini" src="media/mini-bar.webp" width="820" height="204" alt="The floating progress bar: Downloading 42.3%, 38.4 MB/s, 23 minutes left.">
+      </div>
     </div>
+  </section>
 
-    <div class="card">
-      <h2>How it uses your Google account</h2>
-      <p>When you click <strong>Connect Google Drive</strong>, Google asks you to let DriveSync Pro see, edit, create and delete files in your Google Drive. The app needs this to download the folders you pick and upload the folders you choose. It only acts when you start a transfer, and the sign-in is stored on your own PC. Read the <a href="privacy.html">privacy policy</a> for details.</p>
+  <!-- DEMO -->
+  <section class="demo" id="demo">
+    <div class="container">
+      <div class="section-head center">
+        <p class="kicker">See it in action</p>
+        <h2>From Google Drive to your disk in three clicks</h2>
+        <p>Pick a folder, press Start, and watch every file arrive.</p>
+      </div>
+      <div class="video-frame">
+        <video controls playsinline preload="metadata" poster="media/demo-poster.jpg" width="1920" height="1080">
+          <source src="media/demo.mp4" type="video/mp4">
+          Your browser can't play this video. <a href="media/demo.mp4">Download the demo (5 MB)</a>.
+        </video>
+      </div>
     </div>
+  </section>
 
-    <h2>Install</h2>
-    <p>Run <code>DriveSyncPro-Setup.exe</code> and click <strong>Install</strong>. No administrator rights are needed. Works on Windows 10 and 11.</p>
-  </main>
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Features</p>
+        <h2>Made for big moves you don't want to babysit</h2>
+        <p>A whole Drive can be hundreds of gigabytes. DriveSync Pro is built to run for hours, survive interruptions and tell you exactly what's happening.</p>
+      </div>
 
-  <footer>DriveSync Pro &middot; <a href="privacy.html">Privacy policy</a> &middot; <a href="terms.html">Terms of service</a></footer>
-</div>
+      <div class="feature-row">
+        <div class="feature-copy">
+          <h3>Download a folder, or everything</h3>
+          <p>Choose any folder in your Drive with the built-in folder browser, or take the whole thing. Save it to your PC, a USB disk or a big external drive.</p>
+          <ul class="ticks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Shows free space on the destination drive before you start</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Keeps your folder structure exactly as it is on Drive</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Copies 2 to 16 files at once, with an optional speed limit</li>
+          </ul>
+        </div>
+        <img class="shot" src="media/app-download.webp" width="1399" height="1119" loading="lazy" alt="The Download tab: Photos from Google Drive going to E:\Backup\Google Drive, with a Start Download button.">
+      </div>
+
+      <div class="feature-row flip">
+        <div class="feature-copy">
+          <h3>Pause anytime. It picks up where it left off.</h3>
+          <p>Close the app, unplug the drive or restart your PC. Next time you press Start, files you already have are skipped and the copy carries on.</p>
+          <ul class="ticks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Finished files are always kept</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Live speed, files done and time left, also on the taskbar icon</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Clear messages when a drive is missing or something goes wrong</li>
+          </ul>
+        </div>
+        <img class="shot" src="media/app-paused.webp" width="1399" height="1119" loading="lazy" alt="The Download tab after pausing: Paused. Finished files are saved, press Start to continue.">
+      </div>
+
+      <div class="feature-row">
+        <div class="feature-copy">
+          <h3>Keep an eye on it from any app</h3>
+          <p>While a transfer runs and you're working in something else, a small progress bar floats on top of your other windows. It disappears when DriveSync Pro is in front.</p>
+          <ul class="ticks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Pause, resume or open the app right from the bar</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Drag it anywhere; it remembers where you put it</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Switch it on or off with one click</li>
+          </ul>
+        </div>
+        <div class="mini-stage" aria-hidden="false">
+          <div class="fake-app" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          <img src="media/mini-bar.webp" width="820" height="204" loading="lazy" alt="Floating progress bar showing Downloading 42.3%, 38.4 MB/s, 23 minutes left, with pause, open and close buttons.">
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="ico blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V9m0 0-4.5 4.5M12 9l4.5 4.5M5 5h14"/></svg></div>
+          <h3>Upload folders to Drive</h3>
+          <p>Send a folder from your PC or external drive to Google Drive. Every file is checked after upload.</p>
+        </div>
+        <div class="card">
+          <div class="ico indigo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></div>
+          <h3>Google Docs become Office files</h3>
+          <p>Docs, Sheets and Slides download as .docx, .xlsx and .pptx, so they open anywhere.</p>
+        </div>
+        <div class="card">
+          <div class="ico mint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>Private by design</h3>
+          <p>Runs entirely on your PC. Your files and sign-in go only between your computer and Google.</p>
+        </div>
+        <div class="card">
+          <div class="ico amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+          <h3>Speed you control</h3>
+          <p>Go full speed overnight, or set a limit so your internet stays usable during the day.</p>
+        </div>
+        <div class="card">
+          <div class="ico blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 14h.01M11 14h6"/></svg></div>
+          <h3>Works with external drives</h3>
+          <p>Shows when your disk is connected and how much space is left, and warns you before it fills up.</p>
+        </div>
+        <div class="card">
+          <div class="ico indigo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h7"/><path d="m16 15 2 2 3-4"/></svg></div>
+          <h3>Never deletes anything</h3>
+          <p>DriveSync Pro only copies. It doesn't remove files from your Drive or your PC.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="band" id="how">
+    <div class="container">
+      <div class="section-head center">
+        <p class="kicker">How it works</p>
+        <h2>Set up in about a minute</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Install</h3><p>Download DriveSyncPro-Setup.exe, open it and click Install. It adds Start menu and Desktop shortcuts.</p></li>
+        <li><h3>Connect Google Drive</h3><p>Click Connect Google Drive and sign in with Google in your browser. You only do this once.</p></li>
+        <li><h3>Pick a folder and press Start</h3><p>Choose what to copy and where it goes. Watch progress live, or let it run and check the floating bar.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- INSTALL HELP -->
+  <section id="install">
+    <div class="container install-grid">
+      <div>
+        <div class="section-head">
+          <p class="kicker">Install help</p>
+          <h2>Two warnings you might see, and why they're safe</h2>
+          <p>DriveSync Pro is a small independent app, so Windows and Google don't recognise it yet. Here's what to click.</p>
+        </div>
+        <div class="notes">
+          <div class="note">
+            <h3>"Windows protected your PC"</h3>
+            <p>Windows shows this for new apps without a paid publisher certificate. Click <kbd>More info</kbd>, then <kbd>Run anyway</kbd>.</p>
+          </div>
+          <div class="note">
+            <h3>"Google hasn't verified this app"</h3>
+            <p>This appears when you connect your Drive, because the app hasn't been through Google's paid review. Click <kbd>Advanced</kbd>, then <kbd>Go to DriveSync Pro</kbd>, then <kbd>Allow</kbd>.</p>
+          </div>
+        </div>
+        <dl class="reqs">
+          <dt>Works on</dt><dd>Windows 10 or 11 (64-bit)</dd>
+          <dt>Needs</dt><dd>A Google account and an internet connection</dd>
+          <dt>Space</dt><dd>About 85 MB for the app, plus room for your files</dd>
+          <dt>Admin rights</dt><dd>Not needed</dd>
+        </dl>
+      </div>
+      <img class="shot" src="media/setup-install.webp" width="863" height="603" loading="lazy" alt="The DriveSync Pro installer: Install to your user folder, with a desktop shortcut option and an Install button.">
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="band" id="faq">
+    <div class="container">
+      <div class="section-head center">
+        <p class="kicker">FAQ</p>
+        <h2>Questions people ask</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Is DriveSync Pro free?</summary><p>Yes. There's no account, subscription or trial. You only need your own Google account.</p></details>
+        <details><summary>Will it delete anything from my Google Drive?</summary><p>No. Downloads copy files from Drive to your PC, and uploads copy files from your PC to Drive. Nothing is ever removed on either side.</p></details>
+        <details><summary>What happens if my PC restarts or I unplug the drive halfway?</summary><p>Everything that finished copying is kept. Press Start again and DriveSync Pro skips those files and continues. A file that was only partly copied starts again from the beginning.</p></details>
+        <details><summary>Can I copy my entire Google Drive?</summary><p>Yes. Choose "Entire Google Drive" as the source. The app shows how much space is free on your destination drive so you can check it fits first.</p></details>
+        <details><summary>What happens to Google Docs, Sheets and Slides?</summary><p>They're saved as Word, Excel and PowerPoint files (.docx, .xlsx, .pptx). You can turn this off in Settings to skip them instead.</p></details>
+        <details><summary>Is it safe to sign in with Google?</summary><p>Yes. You sign in on Google's own page, and the sign-in is stored only on your PC. DriveSync Pro has no server, so nobody else sees your files. You can remove its access anytime at myaccount.google.com/permissions.</p></details>
+        <details><summary>Does it work on Mac or Linux?</summary><p>Not yet. DriveSync Pro is for Windows 10 and 11.</p></details>
+        <details><summary>How do I uninstall it?</summary><p>Open Windows Settings, go to Apps, find DriveSync Pro and click Uninstall. Files you downloaded or uploaded are never touched.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final">
+    <div class="container">
+      <div class="panel">
+        <img class="logo" src="media/logo.svg" alt="" width="72" height="72">
+        <h2>Bring your Drive home</h2>
+        <p>Free for Windows 10 and 11. One file, one click to install.</p>
+        <a class="btn btn-primary btn-lg" href="https://github.com/wasiulbahar/drivesync/releases/latest/download/DriveSyncPro-Setup.exe">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>Download DriveSync Pro
+        </a>
+        <span class="dl-meta">Version 2.3.0 &middot; 28 MB</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>&copy; 2026 DriveSync Pro &middot; Questions: wasi78045@gmail.com</span>
+    <nav class="links" aria-label="Footer">
+      <a href="privacy.html">Privacy policy</a>
+      <a href="terms.html">Terms of service</a>
+      <a href="https://github.com/wasiulbahar/drivesync/releases">All versions</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  // Header gets a hairline once you scroll
+  (function () {
+    var h = document.querySelector('.site-header');
+    function onScroll() { h.classList.toggle('scrolled', window.scrollY > 8); }
+    window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  })();
+</script>
 </body>
 </html>
